@@ -1,28 +1,32 @@
-import { usestate } from 'react';
+import { useState } from 'react';
 
 function EmployeeForm({ onAdd }) {
-    const [form, setform] = usestate({
+    const [form, setForm] = useState({
         name: "",
         position: "",
-        departement: "",
+        department: "",
     });
+
     const handleChange = (e) => {
-        setform({ ...form, [e.target.name]: e.target.value });
+        setForm({ ...form, [e.target.name]: e.target.value });
     };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         onAdd(form);
-        setform({
+
+        setForm({
             name: "",
             position: "",
-            departement: "",
+            department: "",
         });
     };
+
     return (
         <form onSubmit={handleSubmit}>
             <input name="name" value={form.name} onChange={handleChange} placeholder="Name" required />
             <input name="position" value={form.position} onChange={handleChange} placeholder="Position" required />
-            <input name="departement" value={form.departement} onChange={handleChange} placeholder="Departement" required />
+            <input name="department" value={form.department} onChange={handleChange} placeholder="Department" required />
             <button type="submit">Add Employee</button>
         </form>
     );
