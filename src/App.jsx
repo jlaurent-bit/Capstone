@@ -1,23 +1,22 @@
-import { useState } from 'react';
-import EmployeeList from './components/EmployeeList';
-import EmployeeForm from './components/EmployeeForm';
+import { useState } from "react";
+import EmployeeList from "./Components/EmployeeList";
+import EmployeeForm from "./Components/EmployeeForm";
 
 function App() {
-  const [Employees, setEmployees] = useState([
-    {id: 1, name: "Jean", position: "dev", departement: "IT", active: true},
-    {id: 2, name: "Marie", position: "RH", departement: "RH", active: false},
-  ]);
+
+  const [employees, setEmployees] = useState([]);
+
   const addEmployee = (newEmployee) => {
-    setEmployees([...Employees, { ...newEmployee, id: Date.now(), active: true }]);
+    setEmployees([...employees, { ...newEmployee, id: Date.now() }]);
   };
 
   return (
     <div>
-      <h1>Employees</h1>
+      <h1>Nos employés</h1>
       <EmployeeForm onAdd={addEmployee} />
-      <EmployeeList employees={Employees} />
+      <EmployeeList employees={employees} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
